@@ -34,11 +34,17 @@ import pickle
 file_id = "1e-tIniBVfQw07WDHvrv480piAtTUHpjH"
 output = "similarity.pkl"
 
-if not os.path.exists(output):
-    url = f"https://drive.google.com/uc?id={file_id}"
-    gdown.download(url, output, quiet=False, fuzzy=True)
+# remove corrupted file if it exists
+if os.path.exists(output):
+    os.remove(output)
+
+url = f"https://drive.google.com/uc?id={file_id}"
+
+gdown.download(url, output, quiet=False, fuzzy=True)
 
 similarity = pickle.load(open(output, "rb"))
+
+
 
 
 
@@ -65,6 +71,7 @@ if st.button('recommend'):
     with col5:
         st.header(names[4])
         st.image(posters[4])
+
 
 
 
