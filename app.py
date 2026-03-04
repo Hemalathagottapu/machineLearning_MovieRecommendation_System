@@ -28,11 +28,12 @@ movie_dict=pickle.load(open('movies_dict.pkl','rb'))
 movies=pd.DataFrame(movie_dict)
 
 
-url ="https://drive.google.com/uc?id=1e-tIniBVfQw07WDHvrv480piAtTUHpjH"
+file_id = "1e-tIniBVfQw07WDHvrv480piAtTUHpjH"
 
 if not os.path.exists("similarity.pkl"):
-    gdown.download(url, "similarity.pkl", quiet=True)
-similarity=pickle.load(open('similarity.pkl','rb'))
+    gdown.download(id=file_id, output="similarity.pkl", quiet=False)
+
+similarity = pickle.load(open("similarity.pkl", "rb"))
 
 st.title("Movie recommended system")
 selected_movie_name=st.selectbox('how would like to be connetcted?',
@@ -57,6 +58,7 @@ if st.button('recommend'):
     with col5:
         st.header(names[4])
         st.image(posters[4])
+
 
 
 
