@@ -29,9 +29,12 @@ movies=pd.DataFrame(movie_dict)
 
 
 file_id = "1e-tIniBVfQw07WDHvrv480piAtTUHpjH"
+download_url = f"https://drive.google.com/uc?export=download&id={file_id}"
 
 if not os.path.exists("similarity.pkl"):
-    gdown.download(id=file_id, output="similarity.pkl", quiet=False)
+    r = requests.get(download_url)
+    with open("similarity.pkl", "wb") as f:
+        f.write(r.content)
 
 similarity = pickle.load(open("similarity.pkl", "rb"))
 
