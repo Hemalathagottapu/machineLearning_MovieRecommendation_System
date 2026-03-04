@@ -2,6 +2,7 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
+import os
 def fetch_poster(movie_id):
     response=requests.get('https://api.themoviedb.org/3/movie/{}?api_key=41dabbacccd05c6974e4aa009b07b663'.format(movie_id))
     data=response.json()
@@ -55,6 +56,7 @@ if st.button('recommend'):
     with col5:
         st.header(names[4])
         st.image(posters[4])
+
 
 
 
