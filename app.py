@@ -32,12 +32,13 @@ import os
 import pickle
 
 file_id = "1e-tIniBVfQw07WDHvrv480piAtTUHpjH"
+output = "similarity.pkl"
 
-if not os.path.exists("similarity.pkl"):
+if not os.path.exists(output):
     url = f"https://drive.google.com/uc?id={file_id}"
-    gdown.download(url, "similarity.pkl", quiet=False, fuzzy=True)
+    gdown.download(url, output, quiet=False, fuzzy=True)
 
-similarity = pickle.load(open("similarity.pkl", "rb"))
+similarity = pickle.load(open(output, "rb"))
 
 
 
